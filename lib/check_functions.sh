@@ -7,12 +7,6 @@
 #   https://github.com/snwh/ubuntu-post-install/blob/master/functions/check_functions
 #
 
-# Check dpkg for package installation status
-function check_package_installed() {
-	# query dpkg for install status and return a value
-	dpkg-query -W --showformat='${Status}\n' $@ | grep "install ok installed" &> /dev/null; echo $?
-}
-
 # Check which distribution the user is running
 function check_os {
 	# Variables
@@ -68,23 +62,8 @@ function check_dependencies {
 	LIST="$(dirname "$0")/data/dependencies.list"
 	# Check dependencies
 	for PACKAGE in $(cat $LIST | grep -v '#'); do
-		# If package is not installed
-		if [ $(check_package_installed $PACKAGE) != 0 ]; then
-			echo_message info "This script requires '$PACKAGE' and it is not present on your system."
-			echo_message question 'Would you like to install it to continue? (y/N) : ' && read REPLY
-			case $REPLY in
-			# Positive action
-			[Yy]* )
-				$sh_c "apt install -y $PACKAGE"
-				echo_message success "Package '$PACKAGE' installed."
-				;;
-			# Negative action or invalid
-			* )
-				echo_message info "Exiting..."
-				exit 99
-				;;
-			esac
-		fi
+		echo_message success "Installing '$PACKAGE'"
+		$sh_c "apt install -y $PACKAGE"
 	done
 	echo_message success "All dependencies are installed."
 }

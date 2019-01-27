@@ -1,7 +1,7 @@
 #!/bin/bash
 
-$sh_c "add-apt-repository universe" > /dev/null
-$sh_c "add-apt-repository ppa:git-core/ppa -y" > /dev/null
-$sh_c "add-apt-repository ppa:webupd8team/java -y" > /dev/null
-$sh_c "add-apt-repository ppa:snwh/pulp -y" > /dev/null
-$sh_c "add-apt-repository ppa:system76/pop -y" > /dev/null
+$sh_c "add-apt-repository -n -y ppa:git-core/ppa"
+$sh_c "add-apt-repository -n -y ppa:snwh/pulp"
+$sh_c "add-apt-repository -n -y ppa:system76/pop"
+$sh_c "add-apt-repository -n -y ppa:webupd8team/java"
+$sh_c "add-apt-repository -n -y universe"

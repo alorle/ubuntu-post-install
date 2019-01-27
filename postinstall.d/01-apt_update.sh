@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$sh_c "apt-get update" > /dev/null
-$sh_c "apt-get upgrade -y" > /dev/null
-$sh_c "apt-get dist-upgrade -y" > /dev/null
-$sh_c "snap refresh" > /dev/null
+$sh_c "apt update"
+$sh_c "apt upgrade -y"
+$sh_c "apt dist-upgrade -y"
+$sh_c "snap refresh"
