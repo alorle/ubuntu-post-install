@@ -1,7 +1,5 @@
 build-essential
-git
-gnome-shell-extensions
-gnome-tweak-tool
-ubuntu-restricted-extras
 fish
-ike-qtgui
+git
+ubuntu-make
+ubuntu-restricted-extras
